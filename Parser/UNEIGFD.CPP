@@ -1,0 +1,282 @@
+//////////////////////////////////
+// System level dependencies
+
+#include <windows.h>
+
+//////////////////////////////////
+// ANSI level dependencies
+
+//////////////////////////////////
+// Application level dependencies
+
+#include "prc.h"
+#include "srv.h"
+#include "swiftext.h"
+#include "swiftsrv.h"
+#include "uneiext.h"
+#include "uneigfd.h"
+#include "uneisrv.h"
+
+//////////////////////////////////////////////////////////////////
+// UNEXIM GENERAL FIELD DEFINITION IMPLEMENTATION
+// File uneigfd.cpp
+// Copyright © 1996 Asset Information Management
+// Programmer: Dmitry Protopopov
+///////////////////////////////////////////////////////////
+// UFIELD20
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD20, "UNEXIM FIELD 20")
+  STATIC(OS_MANTADORY, ":20:")
+  TEXT(OS_MANTADORY, hUneiField20_Reference, VARCHAR16)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD20)
+
+////////////////////////////////////////////////////
+// UFIELD20F
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD20F, "UNEXIM FIELD 20F")
+  STATIC(OS_MANTADORY, ":20F:")
+  TEXT(OS_MANTADORY, hUneiField20F_Reference, VARCHAR16)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD20F)
+
+////////////////////////////////////////////////////
+// UFIELD21
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD21, "UNEXIM FIELD 21")
+  STATIC(OS_MANTADORY, ":21:")
+  TEXT(OS_MANTADORY, hUneiField21_Reference, VARCHAR16)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD21)
+
+////////////////////////////////////////////////////
+// UFIELD25C
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD25C, "UNEXIM FIELD 25C")
+  STATIC(OS_MANTADORY, ":25C:")
+  TEXT(OS_MANTADORY, hUneiField25a_AccountNumber, VARCHAR25)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD25C)
+
+////////////////////////////////////////////////////
+// UFIELD25D
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD25D, "UNEXIM FIELD 25D")
+  STATIC(OS_MANTADORY, ":25D:")
+  TEXT(OS_MANTADORY, hUneiField25a_AccountNumber, VARCHAR25)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD25D)
+
+////////////////////////////////////////////////////
+// UFIELD32A
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD32A, "UNEXIM FIELD 32A")
+  STATIC(OS_MANTADORY, ":32A:")
+  DATETIME(OS_MANTADORY, hUneiField32a_Date, YYMMDD)
+  TEXT(OS_MANTADORY, hUneiField32a_CurrencyCode, CHAR3)
+  NUMBER(OS_MANTADORY, hUneiField32a_Amount, NUMBER15)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD32A)
+
+////////////////////////////////////////////////////
+// UFIELD32C
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD32C, "UNEXIM FIELD 32C")
+  STATIC(OS_MANTADORY, ":32C:")
+  TEXT(OS_MANTADORY, hUneiField32a_PayerOrBeneficiary, "%*1[PB]%n\0")
+  TEXT(OS_MANTADORY, hUneiField32a_CurrencyCode, CHAR3)
+  NUMBER(OS_MANTADORY, hUneiField32a_Amount, NUMBER17)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD32C)
+
+////////////////////////////////////////////////////
+// UFIELD32F
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD32F, "UNEXIM FIELD 32F")
+  STATIC(OS_MANTADORY, ":32F:")
+  NUMBER(OS_MANTADORY, hUneiField32a_Amount, NUMBER16)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD32F)
+
+////////////////////////////////////////////////////
+// UFIELD32T
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD32T, "UNEXIM FIELD 32T")
+  STATIC(OS_MANTADORY, ":32T:")
+  TEXT(OS_MANTADORY, hUneiField32a_PayerOrBeneficiary, "%*1[PB]%n\0")
+  TEXT(OS_MANTADORY, hUneiField32a_CurrencyCode, CHAR3)
+  NUMBER(OS_MANTADORY, hUneiField32a_Amount, NUMBER17)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD32T)
+
+////////////////////////////////////////////////////
+// UFIELD32K
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD32K, "UNEXIM FIELD 32K")
+  STATIC(OS_MANTADORY, ":32K:")
+  NUMBER(OS_MANTADORY, hUneiField32a_Amount, NUMBER16)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD32K)
+
+////////////////////////////////////////////////////
+// UFIELD50
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD50, "UNEXIM FIELD 50")
+  STATIC(OS_MANTADORY, ":50:")
+  MULTITEXT(OS_MANTADORY,hUneiField5X_NameAndAddress,1,4,VARCHAR35, EOL,SOForEOT)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD50)
+
+/////////////////////////////////////////////////////////////////////////////////////
+// UFIELD59
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD59, "UNEXIM FIELD 59")
+  STATIC(OS_MANTADORY, ":59:")
+  BEGIN_SEQUENCE(OS_OPTIONAL, NULL)
+    STATIC(OS_MANTADORY, "/")
+    TEXT(OS_MANTADORY, hUneiField5X_AccountNumber, VARCHAR34)
+    STATIC(OS_MANTADORY, EOL)
+  END_SEQUENCE	
+  MULTITEXT(OS_MANTADORY,hUneiField5X_NameAndAddress,1,4,VARCHAR35, EOL,SOForEOT)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD59)
+
+/////////////////////////////////////////////////////////////////////////////////////
+// UFIELD70
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD70, "UNEXIM FIELD 70")
+  STATIC(OS_MANTADORY, ":70:")
+  MULTITEXT(OS_MANTADORY, hUneiField70_Narrative,1,4, VARCHARLINE35,EOL,SOForEOT)
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD70)
+
+////////////////////////////////////////////////////
+// UFIELD71
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD71, "UNEXIM FIELD 71")
+  STATIC(OS_MANTADORY, ":71:")
+  INTEGER(OS_MANTADORY, hUneiField71_Narrative, DIGIT3, "%03lu")
+  STATIC(OS_MANTADORY, EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD71)
+
+////////////////////////////////////////////////////
+// UFIELD72
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD72, "UNEXIM FIELD 72")
+  STATIC(OS_MANTADORY,":72:")
+  MULTITEXT(OS_MANTADORY,hUneiField72_Narrative,1,6, VARCHARLINE35,EOL,SOForEOT)
+  STATIC(OS_MANTADORY,EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD72)
+
+/////////////////////////////////////////////////////////////////
+// UFIELDXXA
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELDXXA, "UNEXIM  FIELD OPTION A") 
+  STATIC(OS_MANTADORY, "A:") 
+  BEGIN_SEQUENCE(OS_OPTIONAL,NULL) 
+    STATIC(OS_MANTADORY,"/") 
+    BEGIN_SEQUENCE(OS_OPTIONAL,NULL) 
+      TEXT(OS_MANTADORY,hUneiFieldXXa_CreditedOrDebitedAccount, "%*1[CD]%n\0") 
+      STATIC(OS_MANTADORY,"/") 
+    END_SEQUENCE 
+    TEXT(OS_MANTADORY,hUneiFieldXXa_AccountNumber, VARCHAR34) 
+    STATIC(OS_MANTADORY,EOL) 
+  END_SEQUENCE 
+  TEXT(OS_MANTADORY, hUneiFieldXXa_BankIdentifierCode, BIC) 
+  STATIC(OS_MANTADORY,EOL) 
+END_IMPLEMENT_SEQUENCE(UFIELDXXA) 
+
+//////////////////////////////////////////////////////////////
+// UFIELDXXD
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELDXXD, "UNEXIM FIELD OPTION D") 
+  STATIC(OS_MANTADORY,"D:") 
+  BEGIN_SEQUENCE(OS_OPTIONAL,NULL) 
+    STATIC(OS_MANTADORY,"/") 
+    BEGIN_SEQUENCE(OS_OPTIONAL,NULL) 
+      TEXT(OS_MANTADORY, hUneiFieldXXa_CreditedOrDebitedAccount,"%*1[CD]%n\0") 
+      STATIC(OS_MANTADORY,"/") 
+    END_SEQUENCE 
+    TEXT(OS_MANTADORY, hUneiFieldXXa_AccountNumber,VARCHAR34) 
+    STATIC(OS_MANTADORY,EOL) 
+  END_SEQUENCE
+  //BEGIN_SEQUENCE(OS_OPTIONAL, NULL)
+    //STATIC(OS_MANTADORY, "//BIC ")
+    //TEXT(OS_MANTADORY, hUneiFieldXXa_RussianBIC, RBIC)
+    //STATIC(OS_MANTADORY, EOL)
+  //END_SEQUENCE
+  //BEGIN_SEQUENCE(OS_OPTIONAL, NULL)
+    //STATIC(OS_MANTADORY, "//INN ")
+    //TEXT(OS_MANTADORY, hUneiFieldXXa_RussianINN, RINN)
+    //STATIC(OS_MANTADORY, EOL)
+  //END_SEQUENCE
+  MULTITEXT(OS_MANTADORY, hUneiFieldXXa_BranchIdentificationOrNameAndAddress,1,4,VARCHAR35,EOL, SOForEOT) 
+  STATIC(OS_MANTADORY,EOL) 
+END_IMPLEMENT_SEQUENCE(UFIELDXXD) 
+
+//////////////////////////////////////////////////////////////
+
+BEGIN_IMPLEMENT_PARALLEL(UFIELDXXAD, "UNEXIM FIELD OPTION A or D")
+  CUSTOM1(UFIELDXXA, OS_MANTADORY, NULL)
+  CUSTOM1(UFIELDXXD, OS_MANTADORY, NULL)
+END_IMPLEMENT_PARALLEL(UFIELDXXAD)
+
+////////////////////////////////////////////////////////////////////
+// UFIELD52AD
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD52AD, "UNEXIM FIELD 52a(A or D)")
+  STATIC(OS_MANTADORY, ":52")
+  CUSTOM1(UFIELDXXAD, OS_MANTADORY, NULL)
+END_IMPLEMENT_SEQUENCE(UFIELD52AD)
+
+/////////////////////////////////////////////////////////////////////////////////////
+// UFIELD54AD
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD54AD, "UNEXIM FIELD 54a(A or D)")
+  STATIC(OS_MANTADORY, ":54")
+  CUSTOM1(UFIELDXXAD, OS_MANTADORY, NULL)
+END_IMPLEMENT_SEQUENCE(UFIELD54AD)
+
+/////////////////////////////////////////////////////////////////////////////////////
+// UFIELD56AD
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD56AD, "UNEXIM FIELD 56a(A or D)")
+  STATIC(OS_MANTADORY, ":56")
+  CUSTOM1(UFIELDXXAD, OS_MANTADORY, NULL)
+END_IMPLEMENT_SEQUENCE(UFIELD56AD)
+
+/////////////////////////////////////////////////////////////////////////////////////
+// UFIELD57AD
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD57AD, "UNEXIM FIELD 57a(A or D)")
+  STATIC(OS_MANTADORY, ":57")
+  CUSTOM1(UFIELDXXAD, OS_MANTADORY, NULL)
+END_IMPLEMENT_SEQUENCE(UFIELD57AD)
+
+/////////////////////////////////////////////////////////////////////////////////////
+// UFIELD35A - Specification of Securities
+/*
+Definition:
+
+The identification of securities related transaction.
+
+Messages Types:
+
+500, 501, 510, 512, 513, 514, 515, 516, 518, 519, 520, 521, 522, 523, 526, 530, 531, 532, 533, 534, 539, 550, 551, 552, 553, 554, 555, 556, 559, 560, 561, 562, 563, 572, 573, 574, 576, 577, 580, 582, 589
+*/
+
+BEGIN_IMPLEMENT_SEQUENCE(UFIELD35A, "UNEXIM FIELD 35A")
+  STATIC(OS_MANTADORY,":35A:")
+  TEXT(OS_MANTADORY, hField35A_CodeWord, LETTER3)
+  BEGIN_PARALLEL(OS_MANTADORY,NULL)
+    BEGIN_SEQUENCE(OS_MANTADORY,NULL)
+      STATIC(OS_MANTADORY,"-")
+      NEGATIVE(OS_MANTADORY, hField35A_Quantity, NUMBER15)
+    END_SEQUENCE
+    NUMBER(OS_MANTADORY, hField35A_Quantity, NUMBER15)
+  END_PARALLEL
+  STATIC(OS_MANTADORY,EOL)
+END_IMPLEMENT_SEQUENCE(UFIELD35A)
+
+//////////////////////////////////////////////////////////////////
+
